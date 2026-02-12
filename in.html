@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutiks Grassroots Investments | Structural Execution</title>
+    <meta name="description" content="Premium construction and infrastructure authority specializing in residential, commercial, and institutional execution.">
+
+    <!-- Typography: Strong Geometric Sans-Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 
+         * DESIGN SYSTEM & RESET 
+         * Strict grid, no rounded corners, muted palette.
+         */
+        :root {
+            --c-concrete: #f4f4f4;
+            --c-charcoal: #1a1a1a;
+            --c-navy: #0a192f;
+            --c-accent: #bfa67a; /* Muted Bronze/Gold */
+            --c-text-light: #e2e2e2;
+            --c-text-dark: #1a1a1a;
+            --c-border: #333333;
+            
+            --f-head: 'Oswald', sans-serif;
+            --f-body: 'Inter', sans-serif;
+            
+            --s-unit: 8px;
+            --s-container: 1440px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1); /* Engineering curve */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--f-body);
+            background-color: var(--c-concrete);
+            color: var(--c-text-dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; height: auto; object-fit: cover; }
+        button, input, textarea, select { font-family: inherit; border: none; outline: none; }
+
+        /* UTILITY CLASSES (Tailwind-ish) */
+        .container {
+            max-width: var(--s-container);
+            margin: 0 auto;
+            padding: 0 calc(var(--s-unit) * 3);
+        }
+        
+        .uppercase { text-transform: uppercase; }
+        .font-head { font-family: var(--f-head); }
+        .font-bold { font-weight: 700; }
+        .text-accent { color: var(--c-accent); }
+        .text-navy { color: var(--c-navy); }
+        
+        .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: calc(var(--s-unit) * 3); }
+        .col-12 { grid-column: span 12; }
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+        .col-3 { grid-column: span 3; }
+
+        /* LAYOUT COMPONENTS */
+        
+        /* Header */
+        .site-header {
+            background-color: var(--c-navy);
+            color: var(--c-text-light);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: var(--f-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: calc(var(--s-unit) * 5);
+        }
+
+        .main-nav a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--c-accent);
+            transition: width 0.3s var(--ease);
+        }
+
+        .main-nav a:hover::after, .main-nav a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* Sections */
+        section {
+            padding: calc(var(--s-unit) * 10) 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-header {
+            margin-bottom: calc(var(--s-unit) * 6);
+            border-left: 4px solid var(--c-navy);
+            padding-left: calc(var(--s-unit) * 2);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--c-navy);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-top: calc(var(--s-unit));
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Specific Pages */
+        .page-view {
+            display: none;
+            animation: fadeIn 0.5s var(--ease);
+        }
+        .page-view.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            background-color: var(--c-charcoal);
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: calc(var(--s-unit) * 4);
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--c-accent);
+            color: var(--c-charcoal);
+            padding: 16px 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover { background-color: #fff; }
+
+        /* Capabilities Grid */
+        .capability-card {
+            background: white;
+            padding: calc(var(--s-unit) * 4);
+            border: 1px solid #ddd;
+            transition: transform 0.3s var(--ease);
+            height: 100%;
+        }
+        .capability-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--c-accent);
+        }
+        .capability-num {
+            font-family: var(--f-head);
+            font-size: 3rem;
+            color: var(--c-concrete);
+            -webkit-text-stroke: 1px var(--c-navy);
+            margin-bottom: 1rem;
+        }
+        .capability-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* SIGNATURE FEATURE: Construction Progress Preview */
+        .progress-section {
+            background-color: var(--c-navy);
+            color: white;
+        }
+        
+        .progress-section .section-title { color: white; }
+        .progress-section .section-subtitle { color: #8892b0; }
+
+        .progress-interface {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 0;
+            height: 600px;
+            background: #112240;
+            border: 1px solid #233554;
+        }
+
+        .progress-controls {
+            border-right: 1px solid #233554;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .phase-btn {
+            background: transparent;
+            color: #8892b0;
+            text-align: left;
+            padding: 1rem 0;
+            font-family: var(--f-head);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #233554;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .phase-btn:hover { color: white; background: rgba(255,255,255,0.05); }
+        
+        .phase-btn.active {
+            color: var(--c-accent);
+            border-left: 4px solid var(--c-accent);
+            padding-left: 1rem;
+        }
+
+        .progress-viewport {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .progress-img.active { opacity: 1; }
+
+        .phase-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(10,25,47,0.9), transparent);
+            padding: 3rem;
+            transform: translateY(20px);
+            transition: transform 0.5s var(--ease);
+        }
+        .phase-info.visible { transform: translateY(0); }
+
+        /* Services List */
+        .service-block {
+            background: white;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1px solid #ddd;
+        }
+        .service-header {
+            background: var(--c-charcoal);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .service-header h3 { font-size: 1.8rem; text-transform: uppercase; line-height: 1; }
+        .service-header span { font-size: 0.9rem; color: var(--c-accent); margin-top: 0.5rem; text-transform: uppercase; }
+        .service-content { padding: 2rem; }
+        .service-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .service-list li:last-child { border: none; }
+
+        /* Projects Grid */
+        .filter-bar {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        .filter-btn {
+            padding: 1rem 0;
+            background: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            position: relative;
+        }
+        .filter-btn.active { color: var(--c-navy); }
+        .filter-btn.active::after {
+            content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: var(--c-navy);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .project-img-wrap {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-img-wrap img {
+            width: 100%; height: 100%; transition: transform 0.6s var(--ease);
+        }
+        .project-card:hover .project-img-wrap img { transform: scale(1.05); }
+        .project-info { padding: 1.5rem; }
+        .project-cat { font-size: 0.75rem; text-transform: uppercase; color: var(--c-accent); font-weight: 600; }
+        .project-title { font-size: 1.25rem; text-transform: uppercase; margin: 0.5rem 0; color: var(--c-navy); }
+
+        /* Contact Section */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus { border-color: var(--c-navy); }
+
+        /* Footer */
+        .site-footer {
+            background: var(--c-charcoal);
+            color: #888;
+            padding: 4rem 0 2rem;
+            font-size: 0.9rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand h4 { color: white; font-size: 1.5rem; font-family: var(--f-head); margin-bottom: 1rem; }
+        .footer-col h5 { color: white; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col a:hover { color: var(--c-accent); }
+        .legal { border-top: 1px solid #333; padding-top: 2rem; text-align: center; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3rem; }
+            .grid-12 { display: flex; flex-direction: column; }
+            .col-6, .col-4, .col-3 { width: 100%; }
+            .progress-interface { grid-template-columns: 1fr; height: auto; }
+            .progress-controls { flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid #233554; }
+            .phase-btn { min-width: 150px; border-bottom: none; border-right: 1px solid #233554; }
+            .phase-btn.active { border-left: none; border-bottom: 4px solid var(--c-accent); }
+            .progress-viewport { height: 400px; }
+            .service-block { grid-template-columns: 1fr; }
+            .contact-layout { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .main-nav { display: none; } /* Simplified mobile handling */
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo" onclick="app.router('home')">MUTIKS<span style="color:var(--c-accent);">.</span></a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" onclick="app.router('home')" id="nav-home" class="active">Home</a></li>
+                    <li><a href="#" onclick="app.router('about')" id="nav-about">About</a></li>
+                    <li><a href="#" onclick="app.router('services')" id="nav-services">Services</a></li>
+                    <li><a href="#" onclick="app.router('projects')" id="nav-projects">Projects</a></li>
+                    <li><a href="#" onclick="app.router('contact')" id="nav-contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <main id="app-root">
+        
+        <!-- HOME PAGE -->
+        <div id="home" class="page-view active">
+            <section class="hero">
+                <img src="https://picsum.photos/seed/construction_hero/1920/1080" alt="Construction Site" class="hero-bg">
+                <div class="container hero-content">
+                    <p style="color: var(--c-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">Infrastructure Authority</p>
+                    <h1>Structural Longevity.<br>Engineered Precision.</h1>
+                    <a href="#" onclick="app.router('projects')" class="btn">View Execution</a>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Core Capabilities</h2>
+                        <p class="section-subtitle">Execution across sectors</p>
+                    </div>
+                    <div class="grid-12">
+                        <div class="col-4 capability-card">
+                            <div class="capability-num">01</div>
+                            <h3 class="capability-title">Construction</h3>
+                            <p style="color:#666">Residential, commercial, and institutional structures built with uncompromising standards.</p>
+                        </div>
+                        <div class="col-4 capability-card">
+                            <div class="capability-num">02</div>
+                            <h3 class="capability-title">Infrastructure</h3>
+                            <p style="color:#666">Street development, public works, and large-scale ground engineering.</p>
+                        </div>
+                        <div class="col-4 capability-card">
+                            <div class="capability-num">03</div>
+                            <h3 class="capability-title">Lighting</h3>
+                            <p style="color:#666">Street and indoor lighting systems designed for visibility and durability.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIGNATURE FEATURE -->
+            <section class="progress-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Execution Preview</h2>
+                        <p class="section-subtitle">The evolution of structure</p>
+                    </div>
+                    
+                    <div class="progress-interface">
+                        <div class="progress-controls">
+                            <button class="phase-btn active" onclick="app.setPhase(0)">01 Groundwork <span>→</span></button>
+                            <button class="phase-btn" onclick="app.setPhase(1)">02 Frame <span>→</span></button>
+                            <button class="phase-btn" onclick="app.setPhase(2)">03 Enclosure <span>→</span></button>
+                            <button class="phase-btn" onclick="app.setPhase(3)">04 Finishing <span>→</span></button>
+                            <button class="phase-btn" onclick="app.setPhase(4)">05 Handover <span>→</span></button>
+                        </div>
+                        <div class="progress-viewport">
+                            <!-- Using seeded images to simulate phases -->
+                            <img src="https://picsum.photos/seed/foundation/1000/600" class="progress-img active" id="prog-img-0">
+                            <img src="https://picsum.photos/seed/frame/1000/600" class="progress-img" id="prog-img-1">
+                            <img src="https://picsum.photos/seed/midbuild/1000/600" class="progress-img" id="prog-img-2">
+                            <img src="https://picsum.photos/seed/finishing/1000/600" class="progress-img" id="prog-img-3">
+                            <img src="https://picsum.photos/seed/finalbuilding/1000/600" class="progress-img" id="prog-img-4">
+
+                            <div class="phase-info visible" id="phase-info">
+                                <h3 style="font-size: 2rem; text-transform: uppercase; margin-bottom: 0.5rem; font-family: var(--f-head);" id="phase-title">Groundwork</h3>
+                                <p style="color: #ccc; max-width: 600px;" id="phase-desc">Site leveling, foundation pouring, and initial structural set-back. The critical base for vertical longevity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="grid-12" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 4rem 0;">
+                        <div class="col-3" style="text-align: center;">
+                            <h3 style="font-size: 3rem; font-family: var(--f-head);">15+</h3>
+                            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Years Active</p>
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <h3 style="font-size: 3rem; font-family: var(--f-head);">120+</h3>
+                            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Projects Completed</p>
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <h3 style="font-size: 3rem; font-family: var(--f-head);">450</h3>
+                            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Units Built</p>
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <h3 style="font-size: 3rem; font-family: var(--f-head);">100%</h3>
+                            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Safety Record</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page-view">
+            <section style="background-color: var(--c-charcoal); color: white; padding: 6rem 0;">
+                <div class="container">
+                    <h1 class="section-title" style="color: white;">Company Foundation</h1>
+                    <p style="max-width: 600px; margin-top: 2rem; font-size: 1.2rem; line-height: 1.6;">
+                        Mutiks Grassroots Investments was established on the principle that structural integrity is non-negotiable. We do not soft-sell aesthetics; we engineer permanence.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="grid-12">
+                        <div class="col-6">
+                            <h2 class="font-head" style="font-size: 2rem; margin-bottom: 1.5rem;">Construction Philosophy</h2>
+                            <p style="margin-bottom: 1.5rem;">Our approach is subtractive. We remove uncertainty through strict adherence to engineering standards. We view every project—be it a private residence or a public street—as a contribution to the built environment that must outlast its creators.</p>
+                            <p>We utilize modular precision in our planning and aggressive timelines in our execution, ensuring resources are optimized and delays are eliminated.</p>
+                        </div>
+                        <div class="col-6">
+                            <img src="https://picsum.photos/seed/blueprint/800/600" alt="Blueprints" style="filter: grayscale(100%);">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Operational Standards</h2>
+                    </div>
+                    <div class="grid-12">
+                        <div class="col-4">
+                            <h4 style="margin-bottom: 1rem; text-transform: uppercase;">Quality Compliance</h4>
+                            <p style="color: #666;">Rigorous material testing and structural audits at every phase of development.</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 style="margin-bottom: 1rem; text-transform: uppercase;">Safety Protocols</h4>
+                            <p style="color: #666;">Zero-tolerance policy for safety violations on-site. PPE enforcement and regular drills.</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 style="margin-bottom: 1rem; text-transform: uppercase;">Leadership</h4>
+                            <p style="color: #666;">Site managers empowered to make immediate technical decisions to maintain momentum.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SERVICES PAGE -->
+        <div id="services" class="page-view">
+            <section>
+                <div class="container">
+                    <h1 class="section-title">Service Matrix</h1>
+                    <p class="section-subtitle">Comprehensive structural solutions</p>
+                </div>
+            </section>
+
+            <section style="padding-top: 0;">
+                <div class="container">
+                    <div class="service-block">
+                        <div class="service-header">
+                            <span>Division 01</span>
+                            <h3>Construction</h3>
+                        </div>
+                        <div class="service-content">
+                            <ul class="service-list">
+                                <li><span>Residential Housing</span> <span>Single & Double Storey</span></li>
+                                <li><span>Commercial Developments</span> <span>Offices, Malls, Complexes</span></li>
+                                <li><span>Institutional Projects</span> <span>Schools, Clinics, Hospitals</span></li>
+                                <li><span>Specialized Units</span> <span>Garages & Warehousing</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-block">
+                        <div class="service-header">
+                            <span>Division 02</span>
+                            <h3>Infrastructure</h3>
+                        </div>
+                        <div class="service-content">
+                            <ul class="service-list">
+                                <li><span>Street Construction</span> <span>Paving & Surfacing</span></li>
+                                <li><span>Public Works</span> <span>Drainage & Earthworks</span></li>
+                                <li><span>Site Preparation</span> <span>Leveling & Excavation</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-block">
+                        <div class="service-header">
+                            <span>Division 03</span>
+                            <h3>Lighting Systems</h3>
+                        </div>
+                        <div class="service-content">
+                            <ul class="service-list">
+                                <li><span>Street Lighting</span> <span>Installation & Maintenance</span></li>
+                                <li><span>Indoor Systems</span> <span>Industrial & Commercial</span></li>
+                                <li><span>Electrical</span> <span>Full wiring & reticulation</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROJECTS PAGE -->
+        <div id="projects" class="page-view">
+            <section>
+                <div class="container">
+                    <div class="section-header">
+                        <h1 class="section-title">Project Portfolio</h1>
+                        <p class="section-subtitle">Execution record</p>
+                    </div>
+
+                    <div class="filter-bar">
+                        <button class="filter-btn active" onclick="app.filterProjects('all', this)">All</button>
+                        <button class="filter-btn" onclick="app.filterProjects('residential', this)">Residential</button>
+                        <button class="filter-btn" onclick="app.filterProjects('commercial', this)">Commercial</button>
+                        <button class="filter-btn" onclick="app.filterProjects('infrastructure', this)">Infrastructure</button>
+                    </div>
+
+                    <div class="project-grid" id="project-grid-container">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page-view">
+            <section>
+                <div class="container">
+                    <div class="grid-12">
+                        <div class="col-6">
+                            <h1 class="section-title">Initiate Project</h1>
+                            <p style="margin-bottom: 2rem; color: #666;">Provide details regarding your structural requirements. Our team reviews submissions within 48 hours.</p>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="text-transform: uppercase; margin-bottom: 0.5rem;">Headquarters</h4>
+                                <p>123 Industrial Blvd, Construction Park<br>Johannesburg, South Africa</p>
+                            </div>
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="text-transform: uppercase; margin-bottom: 0.5rem;">Direct Contact</h4>
+                                <p>projects@mutiks.com<br>+27 11 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                            <form onsubmit="event.preventDefault(); alert('Request received. Our engineering team will contact you shortly.');">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Project Type</label>
+                                    <select class="form-control">
+                                        <option>Residential Construction</option>
+                                        <option>Commercial Development</option>
+                                        <option>Infrastructure/Roads</option>
+                                        <option>Lighting Installation</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estimated Timeline</label>
+                                    <select class="form-control">
+                                        <option>Immediate (0-3 months)</option>
+                                        <option>Short Term (3-6 months)</option>
+                                        <option>Long Term (6+ months)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Project Scope / Location</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn" style="width: 100%;">Submit Request</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MUTIKS.</h4>
+                    <p>Engineered for large-scale execution. Delivered with measurable precision.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <ul>
+                        <li><a href="#" onclick="app.router('home')">Home</a></li>
+                        <li><a href="#" onclick="app.router('about')">About</a></li>
+                        <li><a href="#" onclick="app.router('services')">Services</a></li>
+                        <li><a href="#" onclick="app.router('projects')">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Sectors</h5>
+                    <ul>
+                        <li>Residential</li>
+                        <li>Commercial</li>
+                        <li>Infrastructure</li>
+                        <li>Lighting</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li>Privacy Policy</li>
+                        <li>Terms of Service</li>
+                        <li>Safety Certificates</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="legal">
+                &copy; 2023 Mutiks Grassroots Investments. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        const app = (() => {
+            // State
+            const state = {
+                currentPhase: 0,
+                projects: [
+                    { id: 1, title: "Highland Residences", cat: "residential", img: "https://picsum.photos/seed/house1/600/400" },
+                    { id: 2, title: "Central Mall Complex", cat: "commercial", img: "https://picsum.photos/seed/mall1/600/400" },
+                    { id: 3, title: "National Highway A4", cat: "infrastructure", img: "https://picsum.photos/seed/road1/600/400" },
+                    { id: 4, title: "Westside Apartments", cat: "residential", img: "https://picsum.photos/seed/apt1/600/400" },
+                    { id: 5, title: "City Center Lighting", cat: "infrastructure", img: "https://picsum.photos/seed/light1/600/400" },
+                    { id: 6, title: "Tech Park Office", cat: "commercial", img: "https://picsum.photos/seed/office1/600/400" }
+                ]
+            };
+
+            // Project Data for Progress Section
+            const phases = [
+                { title: "Groundwork", desc: "Site leveling, foundation pouring, and initial structural set-back. The critical base for vertical longevity." },
+                { title: "Frame", desc: "Structural steel and concrete column erection. The skeleton defines the form and load distribution." },
+                { title: "Enclosure", desc: "Brickwork, glazing, and roofing installation. Protecting the internal structure from elements." },
+                { title: "Finishing", desc: "Internal fit-outs, flooring, and detailed electrical integration. Refinement for utility." },
+                { title: "Handover", desc: "Final inspection, cleaning, and site demobilization. Ready for occupation or operation." }
+            ];
+
+            // Navigation Router
+            const router = (pageId) => {
+                // Hide all pages
+                document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+                // Show target page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update Nav State
+                document.querySelectorAll('.main-nav a').forEach(el => el.classList.remove('active'));
+                const navLink = document.getElementById(`nav-${pageId}`);
+                if(navLink) navLink.classList.add('active');
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+            };
+
+            // Progress Feature Logic
+            const setPhase = (index) => {
+                state.currentPhase = index;
+                
+                // Update Buttons
+                document.querySelectorAll('.phase-btn').forEach((btn, i) => {
+                    if(i === index) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                });
+
+                // Update Images
+                document.querySelectorAll('.progress-img').forEach((img, i) => {
+                    if(i === index) img.classList.add('active');
+                    else img.classList.remove('active');
+                });
+
+                // Update Text with simple animation
+                const infoBox = document.getElementById('phase-info');
+                infoBox.classList.remove('visible');
+                
+                setTimeout(() => {
+                    document.getElementById('phase-title').textContent = phases[index].title;
+                    document.getElementById('phase-desc').textContent = phases[index].desc;
+                    infoBox.classList.add('visible');
+                }, 300);
+            };
+
+            // Project Filtering
+            const renderProjects = (filter = 'all') => {
+                const container = document.getElementById('project-grid-container');
+                container.innerHTML = '';
+
+                const filtered = filter === 'all' 
+                    ? state.projects 
+                    : state.projects.filter(p => p.cat === filter);
+
+                filtered.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <div class="project-img-wrap">
+                            <img src="${p.img}" alt="${p.title}">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-cat">${p.cat}</div>
+                            <h3 class="project-title">${p.title}</h3>
+                        </div>
+                    `;
+                    // In a full app, this would route to a project detail page
+                    card.onclick = () => alert(`Viewing details for: ${p.title}`);
+                    container.appendChild(card);
+                });
+            };
+
+            const filterProjects = (cat, btn) => {
+                // UI Toggle
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Render
+                renderProjects(cat);
+            };
+
+            // Initialize
+            const init = () => {
+                renderProjects();
+                // Set initial active state for Home
+                document.getElementById('home').classList.add('active');
+            };
+
+            return {
+                router,
+                setPhase,
+                filterProjects,
+                init
+            };
+        })();
+
+        // Start App
+        document.addEventListener('DOMContentLoaded', app.init);
+    </script>
+</body>
+</html>
