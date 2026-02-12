@@ -76,7 +76,7 @@ export default function PrefabricatedShowcase() {
           <div className="col-6 prefab-image-col">
             <div className="prefab-image-wrapper">
               <Image
-                src="../images/steel-structures-2.jpg"
+                src="../images/steel-structures-2.webp"
                 alt="Exposed steel framework – prefabricated container structure"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -97,3 +97,5 @@ export default function PrefabricatedShowcase() {
     </section>
   );
 }
+
+

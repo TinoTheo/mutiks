@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <Image
-        src="../images/steel-structures.jpg"
+        src="../images/steel-structures.webp"
         alt="Construction Site"
         fill
         className="hero-bg"
@@ -24,3 +24,4 @@ export default function Hero() {
     </section>
   );
 }
+

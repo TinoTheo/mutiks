@@ -53,7 +53,7 @@ export default function OnSiteExecution() {
               )}
               {!isVisible && (
                 <Image
-                  src="../images/handover-2.jpg"
+                  src="../images/handover-2.webp"
                   alt="On‑site execution preview"
                   fill
                   className="video-poster"
@@ -96,3 +96,6 @@ export default function OnSiteExecution() {
     </section>
   );
 }
+
+
+

@@ -113,7 +113,7 @@ ${formData.message || '(no details)'}`;
               </div>
             </div>
 
-            {/* Corporate Headquarters (existing, enhanced) */}
+            {/* Corporate Headquarters (existing, enhanced) 
             <div className="corporate-contact">
               <div className="section-label-group">
                 <span className="accent-line"></span>
@@ -144,7 +144,7 @@ ${formData.message || '(no details)'}`;
                   </a>
                 </div>
               </div>
-            </div>
+            </div>*/}
           </div>
 
           {/* RIGHT COLUMN – Contact Form */}

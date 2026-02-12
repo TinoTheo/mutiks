@@ -7,27 +7,27 @@ const phases = [
   {
     title: 'Groundwork',
     desc: 'The critical base for vertical longevity.',
-    img: '../images/frame.jpg',
+    img: '../images/frame.webp',
   },
   {
     title: 'Frame',
     desc: 'The skeleton defines the form and load distribution.',
-    img: '../images/frame.jpg',
+    img: '../images/frame.webp',
   },
   {
     title: 'Enclosure',
     desc: 'Protecting the internal structure from elements.',
-    img: '../images/enclosure.jpg',
+    img: '../images/enclosure.webp',
   },
   {
     title: 'Finishing',
     desc: 'Internal fit-outs, flooring, and detailed electrical integration. Refinement for utility.',
-    img: '../images/finishing.jpg',
+    img: '../images/finishing.webp',
   },
   {
     title: 'Handover',
     desc: 'Final inspection, cleaning, and site demobilization. Ready for occupation or operation.',
-    img: '../images/handover-2.jpg',
+    img: '../images/handover-2.webp',
   },
 ];
 
@@ -94,3 +94,5 @@ export default function ConstructionProgress() {
     </section>
   );
 }
+
+

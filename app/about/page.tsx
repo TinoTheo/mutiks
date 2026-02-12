@@ -41,7 +41,7 @@ export default function AboutPage() {
             </div>
             <div className="col-6">
               <Image
-                src="../images/blueprint.jpg"
+                src="../images/blueprint.webp"
                 alt="Blueprints"
                 width={800}
                 height={600}

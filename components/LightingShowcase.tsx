@@ -12,7 +12,7 @@ export default function LightingShowcase() {
           <div className="col-6 lighting-image-col">
             <div className="lighting-image-wrapper">
               <Image
-                src="../images/solar-lights-grenbg.jpg"
+                src="../images/solar-lights.webp"
                 alt="Street and indoor lighting installation"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
