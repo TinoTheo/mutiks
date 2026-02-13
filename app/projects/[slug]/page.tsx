@@ -1,45 +1,57 @@
-'use client';
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { projects } from '@/data/projects';
-import ProjectCard from '@/components/ProjectCard';
+import ProjectDetailClient from '@/components/ProjectDetailClient';
 
-export default function ProjectsPage() {
-  const [filter, setFilter] = useState('all');8/0
-
-  const filteredProjects =
-    filter === 'all' ? projects : projects.filter((p) => p.cat === filter);
-
-  return (
-    <section>
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Project Portfolio</h1>
-          <p className="section-subtitle">Execution record</p>
-        </div>
-
-        <div className="filter-bar">
-          {['all', 'residential', 'commercial', 'infrastructure'].map((cat) => (
-            <button
-              key={cat}
-              className={`filter-btn ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
-            >
-              {cat === 'all' ? 'All' : cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        <div className="project-grid">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const project = projects.find((p) => p.slug === params.slug);
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+    };
+  }
 
+  const title = `${project.title} | ${project.cat} Construction Project | Mutiks`;
+  const description = `${project.description} Completed in ${project.year} at ${project.location}. Scope: ${project.scope}`;
 
+  return {
+    title,
+    description,
+    keywords: [
+      project.cat,
+      'construction project',
+      'steel structure',
+      'prefabricated building',
+      project.location,
+    ],
+    alternates: {
+      canonical: `https://mutiks.com/projects/${project.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: project.img,
+          width: 600,
+          height: 400,
+          alt: `${project.title} - ${project.cat} construction`,
+        },
+      ],
+    },
+  };
+}
 
+export default function ProjectPage({ params }: { params: { slug: string } }) {
+  const project = projects.find((p) => p.slug === params.slug);
+  if (!project) return notFound();
+
+  return <ProjectDetailClient project={project} />;
+}

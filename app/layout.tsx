@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from 'next';
 import { Inter, Oswald } from 'next/font/google';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import SchemaOrg from '@/components/SchemaOrg';
 import './globals.css';
 
 const inter = Inter({
@@ -19,14 +21,72 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: 'Mutiks Grassroots Investments | Structural Execution',
-  description:
-    'Premium construction and infrastructure authority specializing in residential, commercial, and institutional execution.',
+  metadataBase: new URL('https://mutiks.com'),
+  title: {
+    template: '%s | Mutiks Grassroots Investments',
+    default: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
+  },
+  description: 'Premium construction and infrastructure authority specializing in prefabricated containers, steel structures, modular classrooms, and institutional execution across Southern Africa.',
+  keywords: [
+    'construction company',
+    'prefabricated containers',
+    'modular classrooms',
+    'steel structures',
+    'street lighting installation',
+    'indoor lighting systems',
+    'residential construction',
+    'commercial construction',
+    'institutional building contractors',
+    'steel frame construction',
+    'container classrooms',
+    'infrastructure development',
+  ],
+  authors: [{ name: 'Mutiks Grassroots Investments' }],
+  creator: 'Mutiks Grassroots Investments',
+  publisher: 'Mutiks Grassroots Investments',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'Mutiks Grassroots Investments',
-    description: 'Structural Longevity. Engineered Precision.',
+    title: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
+    description: 'Premium construction authority specializing in prefabricated containers, steel structures, and modular classrooms.',
+    url: 'https://mutiks.com',
     siteName: 'Mutiks Grassroots Investments',
+    images: [
+      {
+        url: 'https://mutiks.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mutiks Grassroots Investments - Construction Excellence',
+      },
+    ],
+    locale: 'en_ZA',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mutiks Grassroots Investments',
+    description: 'Premium construction authority specializing in prefabricated containers, steel structures, and modular classrooms.',
+    images: ['https://mutiks.com/twitter-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+  alternates: {
+    canonical: 'https://mutiks.com',
   },
 };
 
@@ -37,6 +97,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
+      <head>
+        <SchemaOrg />
+      </head>
       <body>
         <Navbar />
         <main id="app-root">{children}</main>

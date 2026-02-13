@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,8 +55,16 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <div className="container">
-        <Link href="/" className="logo">
-          MUTIKS<span style={{ color: 'var(--c-accent)' }}>.</span>
+        <Link href="/" className="logo p-30">
+         {/* Desktop navigation MUTIKS<span style={{ color: 'var(--c-accent)' }}>.</span>*/}
+                       <Image
+                         src="../images/mgi-logo.png"
+                         alt="logo"
+                         width={150}
+                         height={100}
+                         
+                         unoptimized
+                       />
         </Link>
 
         {/* Desktop navigation */}

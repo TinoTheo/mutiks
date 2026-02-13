@@ -7,6 +7,23 @@ import OnSiteExecution from '@/components/OnSiteExecution';
 import SteelStructureShowcase from '@/components/SteelStructureShowcase';
 import Metrics from '@/components/metrics';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Construction & Steel Structure Specialists | Mutiks Grassroots Investments',
+  description: 'Premium construction company specializing in prefabricated containers, steel structures, modular classrooms, street lighting, and institutional buildings across Southern Africa.',
+  keywords: [
+    'construction company',
+    'prefabricated containers',
+    'modular buildings',
+    'steel structures',
+    'construction contractors',
+  ],
+  alternates: {
+    canonical: 'https://mutiks.com',
+  },
+};
+
 export default function HomePage() {
   return (
     <>

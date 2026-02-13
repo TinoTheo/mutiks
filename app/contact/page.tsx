@@ -1,59 +1,26 @@
-'use client';
+import type { Metadata } from 'next';
+import ContactForm from '@/components/ContactForm';
 
-import { useState, FormEvent } from 'react';
-import Link from 'next/link';
-
-// Business WhatsApp number (international format, no '+' or spaces)
-const WHATSAPP_BUSINESS_NUMBER = '263783372825'; // Harare line
+export const metadata: Metadata = {
+  title: 'Contact Us | Construction Company Southern Africa',
+  description: 'Contact Mutiks Grassroots Investments for prefabricated containers, steel structures, modular classrooms, and lighting installations. Harare and Gaborone offices.',
+  alternates: {
+    canonical: 'https://mutiks.com/contact',
+  },
+};
 
 export default function ContactPage() {
-  // Form state
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    projectType: 'Residential Construction',
-    message: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Construct WhatsApp message
-    const message = `Hello Mutiks Grassroots Investments,
-
-Name: ${formData.name || '(not provided)'}
-Phone: ${formData.phone || '(not provided)'}
-Email: ${formData.email || '(not provided)'}
-Project Type: ${formData.projectType}
-
-Project Details:
-${formData.message || '(no details)'}`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_BUSINESS_NUMBER}?text=${encodedMessage}`;
-
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank');
-  };
-
   return (
     <section className="contact-page">
       <div className="container">
         <div className="grid-12">
-          {/* LEFT COLUMN – Locations & Corporate Contact */}
+          {/* Left column – locations (static, no client logic) */}
           <div className="col-6 contact-left">
             <h1 className="section-title">Initiate Project</h1>
             <p className="contact-intro">
               Provide details regarding your structural requirements. Our team reviews submissions within 48 hours.
             </p>
 
-            {/* Dual Locations – Regional Offices */}
             <div className="locations-section">
               <div className="section-label-group">
                 <span className="accent-line"></span>
@@ -71,8 +38,8 @@ ${formData.message || '(no details)'}`;
                       Harare, Zimbabwe
                     </address>
                     <div className="contact-links">
-                      <a href="tel:+26371436628" className="call-link">
-                        Call +263 71 436 6228
+                      <a href="tel:+263783372825" className="call-link">
+                        Call +263 78 337 2825
                       </a>
                       <a
                         href="https://wa.me/263783372825"
@@ -96,24 +63,24 @@ ${formData.message || '(no details)'}`;
                       Gaborone, Botswana
                     </address>
                     <div className="contact-links">
-                      <a href="tel:+26771852254" className="call-link">
-                        Call +267 71 852 254
+                      <a href="tel:+26771234567" className="call-link">
+                        Call +267 71 234 567
                       </a>
                       <a
-                        href="https://wa.me/2677844462 "
+                        href="https://wa.me/26771234567"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="whatsapp-cta"
                       >
                         WhatsApp
-                      </a>  
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Corporate Headquarters (existing, enhanced) 
+            {/* Corporate Contact
             <div className="corporate-contact">
               <div className="section-label-group">
                 <span className="accent-line"></span>
@@ -144,80 +111,12 @@ ${formData.message || '(no details)'}`;
                   </a>
                 </div>
               </div>
-            </div>*/}
+            </div> */}
           </div>
 
-          {/* RIGHT COLUMN – Contact Form */}
+          {/* Right column – form (client component) */}
           <div className="col-6 contact-right">
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="form-control"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="form-control"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-control"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="projectType">Project Type</label>
-                <select
-                  id="projectType"
-                  name="projectType"
-                  className="form-control"
-                  value={formData.projectType}
-                  onChange={handleChange}
-                >
-                  <option>Residential Construction</option>
-                  <option>Commercial Development</option>
-                  <option>Infrastructure/Roads</option>
-                  <option>Lighting Installation</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Project Scope / Location</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="form-control"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" className="btn" style={{ width: '100%' }}>
-                Submit Request
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>

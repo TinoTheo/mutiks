@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -6,7 +7,17 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <h4>MUTIKS.</h4>
+                    <Link href="/" className="logo p-30">
+         {/* Desktop navigation MUTIKS<span style={{ color: 'var(--c-accent)' }}>.</span>*/}
+                       <Image
+                         src="../images/mgi-logo.png"
+                         alt="logo"
+                         width={150}
+                         height={100}
+                         
+                         unoptimized
+                       />
+        </Link>
             <p>Engineered for large-scale execution. Delivered with measurable precision.</p>
           </div>
           <div className="footer-col">
@@ -36,8 +47,26 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        <div className="footer-col">
+  <h5>Services</h5>
+  <ul>
+    <li><Link href="/services#prefabricated-containers">Prefabricated Containers</Link></li>
+    <li><Link href="/services#steel-structures">Steel Structures</Link></li>
+    <li><Link href="/services#lighting">Lighting Systems</Link></li>
+    <li><Link href="/services#commercial">Commercial Construction</Link></li>
+  </ul>
+</div>
+<div className="footer-col">
+  <h5>Projects</h5>
+  <ul>
+    <li><Link href="/projects">Borrowdale Residences</Link></li>
+    <li><Link href="/projects">Student Rooms</Link></li>
+    <li><Link href="/projects">Officies</Link></li>
+    <li><Link href="/projects">All Projects</Link></li>
+  </ul>
+</div>
         <div className="legal">
-          &copy; 2023 Mutiks Grassroots Investments. All Rights Reserved.
+          &copy; 2025 Mutiks Grassroots Investments. All Rights Reserved.
         </div>
       </div>
     </footer>
