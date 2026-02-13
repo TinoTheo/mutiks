@@ -80,7 +80,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Corporate Contact
+            {/* Corporate Contact */}
             <div className="corporate-contact">
               <div className="section-label-group">
                 <span className="accent-line"></span>
@@ -90,28 +90,11 @@ export default function ContactPage() {
                 <div className="contact-item">
                   <span className="contact-label">Email</span>
                   <a href="mailto:projects@mutiks.com" className="email-link">
-                    projects@mutiks.com
-                  </a>
-                </div>
-                <div className="contact-item">
-                  <span className="contact-label">Call</span>
-                  <a href="tel:+27111234567" className="call-link">
-                    +27 11 123 4567
-                  </a>
-                </div>
-                <div className="contact-item">
-                  <span className="contact-label">WhatsApp</span>
-                  <a
-                    href="https://wa.me/27111234567"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="whatsapp-cta small"
-                  >
-                    +27 11 123 4567
+                    mutiksgrassrootsinvestments@gmail.com
                   </a>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Right column – form (client component) */}
