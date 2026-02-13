@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 const phases = [
   {
-    title: 'Groundwork',
+    title: 'Ground Work',
     desc: 'The critical base for vertical longevity.',
-    img: '../images/frame.webp',
+    img: '../images/ground.webp',
   },
   {
     title: 'Frame',
@@ -22,7 +22,7 @@ const phases = [
   {
     title: 'Finishing',
     desc: 'Internal fit-outs, flooring, and detailed electrical integration. Refinement for utility.',
-    img: '../images/finishing.webp',
+    img: '../images/Finishing.webp',
   },
   {
     title: 'Handover',

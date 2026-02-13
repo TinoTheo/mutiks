@@ -340,6 +340,115 @@ section {
 
 .btn:hover { background-color: #fff; }
 
+/* ===== HERO ANIMATIONS ===== */
+
+/* Base hidden state */
+.hero-content {
+  opacity: 0;
+  transform: translateY(0); /* will be animated per child */
+  transition: opacity 0.6s ease-out;
+}
+
+.hero-content.animate {
+  opacity: 1;
+}
+
+/* Individual child animations */
+.hero-logo-wrapper,
+.hero-headline,
+.hero-subheadline,
+.hero-ctas {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Delay values */
+.hero-logo-wrapper {
+  transition-delay: 0.1s;
+}
+.hero-headline {
+  transition-delay: 0.2s;
+}
+.hero-subheadline {
+  transition-delay: 0.3s;
+}
+.hero-ctas {
+  transition-delay: 0.4s;
+}
+
+/* Active state */
+.hero-content.animate .hero-logo-wrapper,
+.hero-content.animate .hero-headline,
+.hero-content.animate .hero-subheadline,
+.hero-content.animate .hero-ctas {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA specific scale */
+.hero-ctas .btn {
+  transform: scale(0.95);
+  transition: transform 0.5s ease-out, background 0.3s;
+  transition-delay: 0.4s; /* matches parent delay */
+}
+.hero-content.animate .hero-ctas .btn {
+  transform: scale(1);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-logo-wrapper,
+  .hero-headline,
+  .hero-subheadline,
+  .hero-ctas,
+  .hero-ctas .btn {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Logo styling */
+.hero-logo-wrapper {
+  margin-bottom: calc(var(--s-unit) * 3);
+}
+
+.hero-logo {
+  width: auto;
+  height: 60px;
+  object-fit: contain;
+}
+
+.hero-headline {
+  font-size: clamp(3rem, 10vw, 5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: calc(var(--s-unit) * 2);
+}
+
+.hero-subheadline {
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: calc(var(--s-unit) * 3);
+  font-size: 1rem;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: calc(var(--s-unit) * 3);
+}
+
+@media (max-width: 600px) {
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* Capability Cards */
 .capability-card {
   background: white;
