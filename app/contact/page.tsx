@@ -38,8 +38,8 @@ export default function ContactPage() {
                       Harare, Zimbabwe
                     </address>
                     <div className="contact-links">
-                      <a href="tel:+263783372825" className="call-link">
-                        Call +263 78 337 2825
+                      <a href="tel:+263714366228" className="call-link">
+                        Call +263 71 436 6228
                       </a>
                       <a
                         href="https://wa.me/263783372825"
@@ -63,11 +63,11 @@ export default function ContactPage() {
                       Gaborone, Botswana
                     </address>
                     <div className="contact-links">
-                      <a href="tel:+26771234567" className="call-link">
-                        Call +267 71 234 567
+                      <a href="tel:+2671852254" className="call-link">
+                        Call +267 71 852 254
                       </a>
                       <a
-                        href="https://wa.me/26771234567"
+                        href="https://wa.me/+26778744462"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="whatsapp-cta"
