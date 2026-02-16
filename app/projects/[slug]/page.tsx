@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       project.location,
     ],
     alternates: {
-      canonical: `https://mutiks.com/projects/${project.slug}`,
+      canonical: `https://mutiks.africa/projects/${project.slug}`,
     },
     openGraph: {
       title,

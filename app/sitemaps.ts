@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 import { projects } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mutiks.com';
+  const baseUrl = 'https://mutiks.africa';
 
   // Static routes
   const staticRoutes = [

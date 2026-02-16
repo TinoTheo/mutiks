@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://mutiks.com/sitemap.xml',
+    sitemap: 'https://mutiks.africa/sitemap.xml',
   };
 }

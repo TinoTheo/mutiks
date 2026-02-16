@@ -6,9 +6,9 @@ export default function SchemaOrg() {
     '@type': 'ConstructionCompany',
     name: 'Mutiks Grassroots Investments',
     alternateName: 'Mutiks Construction',
-    url: 'https://mutiks.com',
-    logo: 'https://mutiks.com/logo.png',
-    image: 'https://mutiks.com/og-image.jpg',
+    url: 'https://mutiks.africa',
+    logo: 'https://mutiks.africa/logo.png',
+    image: 'https://mutiks.africa/og-image.jpg',
     description: 'Premium construction and infrastructure authority specializing in prefabricated containers, steel structures, modular classrooms, and institutional execution.',
     address: [
       {
@@ -27,10 +27,10 @@ export default function SchemaOrg() {
       },
     ],
     telephone: ['+263783372825', '+26771234567', '+27111234567'],
-    email: 'projects@mutiks.com',
+    email: 'projects@mutiks.africa',
     sameAs: [
-      'https://www.facebook.com/mutiksconstruction',
-      'https://www.linkedin.com/company/mutiks-grassroots-investments',
+      'https://www.facebook.africa/mutiksconstruction',
+      'https://www.linkedin.africa/company/mutiks-grassroots-investments',
     ],
     foundingDate: '2008',
     founder: {

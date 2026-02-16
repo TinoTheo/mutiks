@@ -21,7 +21,7 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mutiks.com'),
+  metadataBase: new URL('https://mutiks.africa'),
   title: {
     template: '%s | Mutiks Grassroots Investments',
     default: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
@@ -52,11 +52,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
     description: 'Premium construction authority specializing in prefabricated containers, steel structures, and modular classrooms.',
-    url: 'https://mutiks.com',
+    url: 'https://mutiks.africa',
     siteName: 'Mutiks Grassroots Investments',
     images: [
       {
-        url: 'https://mutiks.com/og-image.png',
+        url: 'https://mutiks.africa/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Mutiks Grassroots Investments - Construction Excellence',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mutiks Grassroots Investments',
     description: 'Premium construction authority specializing in prefabricated containers, steel structures, and modular classrooms.',
-    images: ['https://mutiks.com/twitter-image.png'],
+    images: ['https://mutiks.africa/twitter-image.png'],
   },
   robots: {
     index: true,
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://mutiks.com',
+    canonical: 'https://mutiks.africa',
   },
 };
 

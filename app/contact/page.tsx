@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Contact Us | Construction Company Southern Africa',
   description: 'Contact Mutiks Grassroots Investments for prefabricated containers, steel structures, modular classrooms, and lighting installations. Harare and Gaborone offices.',
   alternates: {
-    canonical: 'https://mutiks.com/contact',
+    canonical: 'https://mutiks.africa/contact',
   },
 };
 
@@ -89,8 +89,8 @@ export default function ContactPage() {
               <div className="corporate-details">
                 <div className="contact-item">
                   <span className="contact-label">Email</span>
-                  <a href="mailto:projects@mutiks.com" className="email-link">
-                    mutiksgrassrootsinvestments@gmail.com
+                  <a href="mailto:projects@mutiks.africa" className="email-link">
+                    mutiksgrassrootsinvestments@gmail.africa
                   </a>
                 </div>
               </div>

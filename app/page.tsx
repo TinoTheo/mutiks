@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'construction contractors',
   ],
   alternates: {
-    canonical: 'https://mutiks.com',
+    canonical: 'https://mutiks.africa',
   },
 };
 
