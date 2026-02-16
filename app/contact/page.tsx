@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Contact Us | Construction Company Southern Africa',
   description: 'Contact Mutiks Grassroots Investments for prefabricated containers, steel structures, modular classrooms, and lighting installations. Harare and Gaborone offices.',
   alternates: {
-    canonical: 'https://mutiks.africa/contact',
+    canonical: 'https://www.mutiks.africa/contact',
   },
 };
 

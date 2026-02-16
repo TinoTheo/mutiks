@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Construction Services | Steel Structures, Prefabricated Containers & Lighting',
   description: 'Comprehensive construction services including prefabricated containers, steel structural systems, modular classrooms, street lighting installation, and institutional buildings.',
   alternates: {
-    canonical: 'https://mutiks.africa/services',
+    canonical: 'https://www.mutiks.africa/services',
   },
 };
 

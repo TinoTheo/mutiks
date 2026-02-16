@@ -23,8 +23,10 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mutiks.africa'),
   title: {
-    template: '%s | Mutiks Grassroots Investments',
+    
     default: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
+    template: '%s | Mutiks Grassroots Investments',
+
   },
   description: 'Premium construction and infrastructure authority specializing in prefabricated containers, steel structures, modular classrooms, and institutional execution across Southern Africa.',
   keywords: [
