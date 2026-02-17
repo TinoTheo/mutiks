@@ -8,6 +8,7 @@ import SteelStructureShowcase from '@/components/SteelStructureShowcase';
 import Metrics from '@/components/metrics';
 
 import type { Metadata } from 'next';
+import ReviewsSection from '@/components/ReviewsSection';
 
 export const metadata: Metadata = {
   title: 'Construction & Steel Structure Specialists | Mutiks Grassroots Investments',
@@ -37,6 +38,7 @@ export default function HomePage() {
       <OnSiteExecution />
       {/* Existing: Geometric Steel Intermission */}
       <SteelStructureShowcase />
+      <ReviewsSection/>
     </>
   );
 }

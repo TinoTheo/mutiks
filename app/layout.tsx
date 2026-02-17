@@ -20,6 +20,7 @@ const oswald = Oswald({
   display: 'swap',
 });
 
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mutiks.africa'),
   title: {
@@ -50,6 +51,10 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  icons:{
+    icon: '/favico.ico',
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: 'Mutiks Grassroots Investments | Construction & Steel Structure Specialists',
